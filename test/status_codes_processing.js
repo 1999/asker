@@ -52,11 +52,12 @@ module.exports = {
 
         ask({ port : server.port, requestId : 'test' }, function(error) {
             assert.strictEqual(error.code, Asker.Error.CODES.UNEXPECTED_STATUS_CODE, '304 is not valid by default');
+
             assert.ok(
                 (new RegExp([
                     'Unexpected status code {CODE:304} in the response for request ',
                     REQUEST_ID,
-                    ' in \\d+~\\d+ ms http://localhost:',
+                    ' in \\d+~\\d? ms http://localhost:',
                     server.port,
                     '/'
                 ].join(''))).test(error.message),
